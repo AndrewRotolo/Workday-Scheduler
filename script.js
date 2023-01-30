@@ -2,6 +2,27 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  //simply displays the current day
+var today = moment().format('dddd');
+$('#currentDay').text(today);
+
+
+//this code block color codes each time block based on past/present/future (truncated to the hour) by adding the relevant classes.
+var hour = moment().format('H');
+
+for (var i = 9; i <= 17; i++) {
+  var id = "#hour-" + i;
+  if (hour < i) {
+    $(id).addClass("future");
+  } else if (hour == i) {
+    $(id).addClass("present");
+  } else {
+    $(id).addClass("past");
+  }
+}
+
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
